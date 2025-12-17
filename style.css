@@ -1,0 +1,865 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.85), rgba(230, 244, 255, 0.9)),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=2000&q=80');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding: 24px;
+    color: #1c2a3a;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 16px;
+    box-shadow: 0 18px 50px rgba(24, 94, 224, 0.15);
+    overflow: hidden;
+}
+
+.hero-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 28px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+}
+
+.hero-logo {
+    width: 180px;
+    max-width: 40vw;
+    height: auto;
+    object-fit: contain;
+}
+
+.hero-title {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #1f2d4d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-section {
+    display: none;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+    margin-top: 22px;
+}
+
+.form-section.active {
+    display: block;
+}
+
+.form-section h2 {
+    color: #667eea;
+    margin-bottom: 30px;
+    font-size: 24px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.form-section-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #764ba2;
+    margin: 30px 0 20px 0;
+    padding-left: 10px;
+    border-left: 4px solid #764ba2;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group input[type="date"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: white;
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.form-group input[type="number"]:focus {
+    outline: none;
+    border-color: #67a6ff;
+    box-shadow: 0 0 0 4px rgba(103, 166, 255, 0.25);
+}
+
+.form-group input[type="date"] {
+    cursor: pointer;
+    position: relative;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 1;
+    filter: invert(0.5);
+}
+
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.form-group input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* 週次/次數容器 */
+.week-session-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.week-session-container span {
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+}
+
+.week-session-input {
+    width: 80px !important;
+    min-width: 80px;
+    padding: 10px !important;
+    text-align: center;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+}
+
+/* 遊戲選擇容器 */
+.game-select-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.game-select,
+.game-input {
+    flex: 1;
+}
+
+.game-input {
+    display: block;
+}
+
+.game-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-small {
+    padding: 8px 20px;
+    font-size: 14px;
+}
+
+/* 日期範圍容器 */
+.date-range-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.date-input-wrapper {
+    flex: 1;
+    min-width: 200px;
+}
+
+.date-input-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.date-range-separator {
+    font-size: 16px;
+    font-weight: 600;
+    color: #667eea;
+    padding-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input[type="file"] {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-icon i {
+    margin-right: 8px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* 摘要顯示區域 */
+.summary-display {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    border-radius: 16px;
+    padding: 22px;
+    max-height: 500px;
+    overflow-y: auto;
+    line-height: 1.8;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+}
+
+.summary-item {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed rgba(102, 126, 234, 0.25);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.summary-label {
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.summary-value {
+    color: #555;
+    word-wrap: break-word;
+}
+
+.summary-image {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    margin-top: 10px;
+    border: 2px solid #e0e0e0;
+}
+
+.screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.screenshot-gallery .summary-image {
+    margin-top: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* 響應式截圖畫廊 */
+@media (max-width: 768px) {
+    .screenshot-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+}
+
+/* 簽名畫布 */
+#signature-pad {
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: crosshair;
+    background: white;
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 15px;
+}
+
+.signature-actions {
+    margin-top: 10px;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.screenshot-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.screenshot-thumb {
+    position: relative;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.screenshot-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.report-card {
+    margin-bottom: 0;
+    padding: 15px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    border-left: 4px solid #667eea;
+}
+
+.homework-card {
+    border-left-color: #764ba2;
+}
+
+.thumb-remove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* QR Code 容器樣式 */
+#qrcode-container {
+    width: 160px;
+    height: 160px;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .hero-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-logo {
+        width: 140px;
+    }
+
+    .hero-title {
+        justify-content: center;
+    }
+
+    .container {
+        margin: 10px;
+        border-radius: 8px;
+    }
+
+    .form-section {
+        padding: 25px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    #signature-pad {
+        width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .date-range-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .date-input-wrapper {
+        min-width: 100%;
+    }
+
+    .date-range-separator {
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .game-select-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .game-actions {
+        flex-direction: column;
+    }
+
+    .game-actions .btn {
+        width: 100%;
+    }
+
+    /* 成果報告區塊：第一列的三個欄位垂直排列 */
+    .game-kpi-block-row.first-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 520px) {
+    .hero-logo {
+        width: 100px;
+    }
+}
+
+/* 遊戲與 KPI 配對容器 */
+.game-kpi-blocks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.game-kpi-block {
+    border: 1px solid rgba(103, 166, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    position: relative;
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+    margin-bottom: 20px;
+    backdrop-filter: blur(15px);
+}
+
+.game-kpi-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    gap: 10px;
+}
+
+.game-kpi-block-title {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 16px;
+}
+
+.block-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-kpi-block-save,
+.homework-block-save {
+    background: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.game-kpi-block-save:hover,
+.homework-block-save:hover {
+    background: #138496;
+}
+
+.game-kpi-block-remove,
+.homework-block-remove {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.game-kpi-block-remove:hover,
+.homework-block-remove:hover {
+    background: #c82333;
+}
+
+.game-kpi-block-row {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.game-kpi-block-row.first-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.game-kpi-block-row.second-row {
+    grid-template-columns: 1fr;
+    margin-top: 15px;
+}
+
+.game-kpi-block-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-kpi-block-field label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.block-game-select,
+.block-game-input,
+.block-kpi-input,
+.block-notes-input,
+.block-outcome-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.block-game-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+}
+
+.block-game-select:focus,
+.block-game-input:focus,
+.block-kpi-input:focus,
+.block-notes-input:focus,
+.block-outcome-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.game-select-wrapper {
+    width: 100%;
+}
+
+.game-input-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.block-outcome-textarea {
+    resize: vertical;
+    min-height: 120px;
+    width: 100%;
+}
+
+.btn-add-pair {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* 家庭作業區塊容器 */
+.homework-blocks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.homework-block {
+    border: 1px solid rgba(103, 166, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    position: relative;
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+    margin-bottom: 20px;
+    backdrop-filter: blur(15px);
+}
+
+.saved-highlight {
+    box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.25);
+    transition: box-shadow 0.3s ease;
+}
+
+.homework-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    gap: 10px;
+}
+
+.homework-block-title {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 16px;
+}
+
+.homework-block-remove {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.homework-block-remove:hover {
+    background: #c82333;
+}
+
+.homework-block-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.homework-block-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.homework-block-field label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.homework-select,
+.homework-kpi-input,
+.homework-notes-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.homework-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+}
+
+.homework-select:focus,
+.homework-kpi-input:focus,
+.homework-notes-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.homework-notes-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.homework-select-wrapper {
+    width: 100%;
+}
+
+.homework-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.homework-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.homework-input-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-add-homework {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* 響應式：作業區塊 */
+@media (max-width: 768px) {
+    .homework-block-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .week-session-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .week-session-input {
+        width: 100% !important;
+    }
+}
