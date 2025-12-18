@@ -11,15 +11,15 @@
 <body>
     <div class="container">
         <header>
-            <h1>會員服務簽到單</h1>
+            <h1><i class="fas fa-clipboard-check"></i> 會員服務簽到單</h1>
         </header>
 
         <form id="signup-form">
-            <!-- 第一區：執行者輸入區 -->
             <section id="executor-input-section" class="form-section active">
-                <h2><i class="fas fa-user-cog"></i> 執行者輸入</h2>
+                <div class="section-header">
+                    <h2><i class="fas fa-user-cog"></i> 執行者輸入</h2>
+                </div>
                 
-                <!-- 服務週期 -->
                 <div class="form-group">
                     <label>服務週期</label>
                     <div class="week-session-container">
@@ -31,108 +31,97 @@
                     </div>
                 </div>
                 
-                <!-- 基礎資訊 -->
                 <div class="form-group">
                     <label for="Member_ID">會員編號 (Member_ID)</label>
-                    <input type="text" id="Member_ID" name="Member_ID" required>
+                    <input type="text" id="Member_ID" name="Member_ID" placeholder="請輸入會員編號" required>
                 </div>
 
                 <div class="form-group">
-                    <label>報告日期範圍 (Report_Date_Range)</label>
+                    <label>報告日期範圍</label>
                     <div class="date-range-container">
                         <div class="date-input-wrapper">
-                            <label for="Report_Date_Range_Start">開始日期</label>
                             <input type="date" id="Report_Date_Range_Start" name="Report_Date_Range_Start" required>
                         </div>
                         <span class="date-range-separator">至</span>
                         <div class="date-input-wrapper">
-                            <label for="Report_Date_Range_End">結束日期</label>
                             <input type="date" id="Report_Date_Range_End" name="Report_Date_Range_End" required>
                         </div>
                     </div>
                 </div>
 
-                <!-- 成果報告 -->
                 <div class="form-section-subtitle"><i class="fas fa-chart-line"></i> 成果報告</div>
-                
                 <div class="form-group">
-                    <label>遊戲成果報告區塊</label>
                     <div id="game-kpi-pairs-container" class="game-kpi-blocks-container">
-                        <!-- 動態添加的區塊將在這裡 -->
-                    </div>
-                    <button type="button" id="add-game-kpi-pair" class="btn btn-secondary btn-add-pair btn-icon"><i class="fas fa-plus-circle"></i> 新增報告區塊</button>
+                        </div>
+                    <button type="button" id="add-game-kpi-pair" class="btn btn-secondary btn-icon">
+                        <i class="fas fa-plus-circle"></i> 新增報告區塊
+                    </button>
                 </div>
 
-                <!-- 即時驗證 -->
                 <div class="form-section-subtitle"><i class="fas fa-camera-retro"></i> 即時驗證 (截圖)</div>
-                
                 <div class="form-group">
-                    <label for="screenshot">截圖上傳（可選擇多張）</label>
                     <div class="file-actions">
                         <button type="button" id="choose-files-btn" class="btn btn-secondary btn-icon"><i class="fas fa-folder-open"></i> 選擇檔案</button>
-                        <button type="button" id="upload-files-btn" class="btn btn-primary btn-icon"><i class="fas fa-cloud-upload-alt"></i> 開始上傳</button>
+                        <input type="file" id="screenshot" name="screenshot" accept="image/*" multiple style="display: none;">
                     </div>
-                    <input type="file" id="screenshot" name="screenshot" accept="image/*" multiple style="display: none;">
                     <div id="screenshot-preview" class="screenshot-preview"></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="Screenshot_Description">截圖說明 (Screenshot_Description)</label>
-                    <textarea id="Screenshot_Description" name="Screenshot_Description" rows="4"></textarea>
-                </div>
-
-                <!-- 家庭作業公告 -->
                 <div class="form-section-subtitle"><i class="fas fa-book-reader"></i> 家庭作業公告</div>
-                
                 <div class="form-group">
-                    <div id="homework-blocks-container" class="homework-blocks-container">
-                        <!-- 動態添加的作業區塊將在這裡 -->
-                    </div>
-                    <button type="button" id="add-homework-block" class="btn btn-secondary btn-add-homework btn-icon"><i class="fas fa-plus-circle"></i> 新增作業</button>
+                    <div id="homework-blocks-container" class="homework-blocks-container"></div>
+                    <button type="button" id="add-homework-block" class="btn btn-secondary btn-icon">
+                        <i class="fas fa-plus-circle"></i> 新增作業
+                    </button>
                 </div>
 
                 <div class="form-actions">
-                    <button type="button" id="confirm-btn" class="btn btn-primary btn-icon">
-                        <i class="fas fa-eye"></i> 進入確認階段
+                    <button type="button" id="next-step-btn" class="btn btn-primary btn-icon">
+                        <i class="fas fa-chevron-right"></i> 進入確認階段
                     </button>
                 </div>
             </section>
 
-            <!-- 第二區：會員確認區 -->
             <section id="member-confirmation-section" class="form-section">
-                <h2><i class="fas fa-user-check"></i> 會員確認</h2>
+                <div class="section-header">
+                    <h2><i class="fas fa-user-check"></i> 會員確認</h2>
+                </div>
                 
-                <!-- 只讀摘要 -->
                 <div class="form-group">
-                    <label>資料摘要</label>
+                    <label>資料摘要核對</label>
                     <div id="summary-display" class="summary-display"></div>
                 </div>
 
-                <!-- 分享功能：生成 LINE 分享連結與 QR Code -->
-                <div class="form-group" id="share-link-group">
-                    <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
-                        <button type="button" id="generate-share-link" class="btn btn-secondary btn-icon">
-                            <i class="fas fa-share-alt"></i> 生成 LINE 分享連結 / QR Code
+                <div class="share-box">
+                    <div class="share-header">
+                        <button type="button" id="generate-share-link" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-share-alt"></i> 生成分享連結 / QR Code
                         </button>
                     </div>
-                    <input type="text" id="share-url" readonly placeholder="已產生分享連結後會顯示在此" />
-                    <div id="share-qr-wrapper" style="margin-top: 10px; display: none;">
+                    <input type="text" id="share-url" readonly placeholder="分享連結將顯示在此" />
+                    <div id="share-qr-wrapper" class="qr-wrapper" style="display: none;">
                         <div id="qrcode-container"></div>
+                        <p class="qr-hint">請會員掃描上方 QR Code 進行確認</p>
                     </div>
                 </div>
 
-                <!-- 電子簽名 -->
                 <div class="form-group">
-                    <label>電子簽名</label>
-                    <canvas id="signature-pad" width="600" height="200"></canvas>
+                    <label>會員電子簽名</label>
+                    <div class="signature-wrapper">
+                        <canvas id="signature-pad"></canvas>
+                    </div>
                     <div class="signature-actions">
-                        <button type="button" id="clear-signature" class="btn btn-secondary">清除簽名</button>
+                        <button type="button" id="clear-signature" class="btn btn-outline">清除簽名</button>
                     </div>
                 </div>
 
                 <div class="form-actions">
-                    <button type="button" id="back-btn" class="btn btn-secondary btn-icon"><i class="fas fa-arrow-left"></i> 返回修改</button>
-                    <button type="submit" id="submit-btn" class="btn btn-primary btn-icon"><i class="fas fa-paper-plane"></i> 提交表單</button>
+                    <button type="button" id="back-btn" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> 返回修改
+                    </button>
+                    <button type="submit" id="submit-btn" class="btn btn-success btn-icon">
+                        <i class="fas fa-paper-plane"></i> 提交表單
+                    </button>
                 </div>
             </section>
         </form>
